@@ -57,6 +57,8 @@ Once you finish the assignment, submit a URL link to your repository or your pul
   - Create a new Postman environment named “AdvancedPromoEnv.”
   - Define a variable `baseUrl` with the value pointing to your Spring Boot application (e.g., `http://localhost:8080`).
 
+![Enviroment SetUp.jpg](img/Enviroment%20SetUp.jpg)
+
 - **Collection Creation:**
 
   - Create a Postman collection titled “Advanced DI & Early Bird Discount Tests.”
@@ -68,8 +70,13 @@ Once you finish the assignment, submit a URL link to your repository or your pul
     - **URL:** `{{baseUrl}}/api/discount`
     - **Query Parameters:** Include parameters for `eventDate` and `bookingDate` (e.g., `eventDate=2025-06-30`, `bookingDate=2025-05-15`).
     - **Goal:** Verify that when `feature.earlybird.enabled` is `true`, the endpoint returns the correct discount message or value.
+  
+![GET Request (Calculate Discount).jpg](img/GET%20Request%20%28Calculate%20Discount%29.jpg)
+
   - **Negative Test Request:**
     - Change the query parameters (e.g., booking closer to the event date) to test the edge cases, verifying that no discount is applied when appropriate.
+
+![Negative Test Request.jpg](img/Negative%20Test%20Request.jpg)
 
 - **Add Scripts:**
 
@@ -79,9 +86,14 @@ Once you finish the assignment, submit a URL link to your repository or your pul
     - That the response contains a discount value or message consistent with your business rules.
     - Optionally, log key output for debugging purposes.
 
+![Post-response Script.jpg](img/Post-response%20Script.jpg)
+
 - **Run and Validate:**
   - Use the Postman Collection Runner to execute your requests.
   - Test both the positive (discount applied) and negative (no discount) scenarios by toggling the property `feature.earlybird.enabled` and by varying the query parameters.
+
+
+![Run and Validate.jpg](img/Run%20and%20Validate.jpg)
 
 <br />
 
@@ -90,12 +102,23 @@ Once you finish the assignment, submit a URL link to your repository or your pul
 Update your repository’s `README.md` to include:
 
 - A brief explanation of your design choices for the **EarlyBirdDiscountService**.
+Trate de elegir el diseño lo mas simple.
 - Answers to:
   - Why did you choose constructor-based DI for this lab?
+  
+Utilicé una inyección Básica o de Campo, por que no hay que codear mucho y ya funciona bien para el ejercicio.
+  
   - What advantages do Postman pre-request and post-response scripts offer for automated testing?
-  - How does your application behave when the early bird feature is disabled?
+
+Es un poco mas sencillo aplicar un testing acá, a pesar que no se mucho de JavaScript.
+
+  -How does your application behave when the early bird feature is disabled?
+ 
+Envia un mensaje para pasar el Valor a true, o aplicar el feature que puede ser que no este escrito en las properties. 
+
   - What are some challenges you faced when integrating advanced DI with API testing?
 
+Hay dos respuestas de Entidad dentro del Servicio; que no pude hacer pasar por Postman (me da error 500), solo me sale el texto del error dentro de IntelliJ.
 <br />
 
 ## FAQs
